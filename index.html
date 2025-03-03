@@ -25,8 +25,8 @@
             <a class="navbar-brand" href="index.html"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45.28363" height="47.95985" viewBox="0,0,45.28363,47.95985"><g transform="translate(-217.35818,-155.30103)"><g data-paper-data="{&quot;isPaintingLayer&quot;:true}" fill-rule="nonzero" stroke="#000000" stroke-width="2" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" style="mix-blend-mode: normal"><path d="M218.35818,191.61917v-24.63181h43.28363v24.63181z" fill="#06fff3" stroke-linecap="butt"/><path d="M261.48876,179.21941h-24.30379l-11.46641,11.4664h35.7702z" fill="#85afaf" stroke-linecap="round"/><path d="M246.15868,179.46868l-4.48685,4.98539h-9.34761l5.04771,-5.04771h8.91139" fill="#77ffff" stroke-linecap="round"/><path d="M250.27163,183.45699h10.46932" fill="none" stroke-linecap="round"/><path d="M255.00775,187.19604h6.23174" fill="none" stroke-linecap="round"/><path d="M244.41379,174.81828h16.94326" fill="none" stroke-linecap="round"/><path d="M234.73193,170.97401h20.36039" fill="none" stroke-linecap="round"/><path d="M224.33816,173.964h16.08898" fill="none" stroke-linecap="round"/><text transform="translate(219.74236,163.57281) scale(0.18943,0.18943)" font-size="40" xml:space="preserve" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="Sans Serif" font-weight="normal" text-anchor="start" style="mix-blend-mode: normal"><tspan x="0" dy="0">I. M. SPEED</tspan></text><text transform="translate(221.87156,200.79829) scale(0.18943,0.18943)" font-size="40" xml:space="preserve" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="Sans Serif" font-weight="normal" text-anchor="start" style="mix-blend-mode: normal"><tspan x="0" dy="0">RAILWAYS</tspan></text></g></g></svg></a>
         </div>
         <ul class="navbar-nav me-auto">
-            <li class="nav-item"><a class="nav-link" href="page2.html">Train Schedule</a></li>
-            <li class="nav-item"><a class="nav-link" href="page3.html">Contact Info</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Train Schedule</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact Info</a></li>
         </ul>
     </div>
 </nav>
@@ -49,34 +49,34 @@
             <div class="container">
                 <label>Leaving From:</label>
                 <select class="form-select" id="leavefrom">
-                    <option value="1">Recto</option>
+                    <option value="0">Recto</option>
                     <option value="2">Legarda</option>
                     <option value="3">Pureza</option>
-                    <option value="4">V. Mapa</option>
-                    <option value="5">J. Ruiz</option>
-                    <option value="6">Gilmore</option>
-                    <option value="7">Betty Go. Balmonte</option>
-                    <option value="8">Cubao</option>
-                    <option value="9">Anonas</option>
-                    <option value="10">Katipunan</option>
-                    <option value="11">Santolan</option>
+                    <option value="5">V. Mapa</option>
+                    <option value="6">J. Ruiz</option>
+                    <option value="8">Gilmore</option>
+                    <option value="9">Betty Go. Balmonte</option>
+                    <option value="10">Cubao</option>
+                    <option value="12">Anonas</option>
+                    <option value="13">Katipunan</option>
+                    <option value="15">Santolan</option>
                 </select>
 
                 <br>
 
                 <label>Going To:</label>
                 <select class="form-select" id="goingto">
-                    <option value="1">Recto</option>
+                    <option value="0">Recto</option>
                     <option value="2">Legarda</option>
                     <option value="3">Pureza</option>
-                    <option value="4">V. Mapa</option>
-                    <option value="5">J. Ruiz</option>
-                    <option value="6">Gilmore</option>
-                    <option value="7">Betty Go. Balmonte</option>
-                    <option value="8">Cubao</option>
-                    <option value="9">Anonas</option>
-                    <option value="10">Katipunan</option>
-                    <option value="11">Santolan</option>
+                    <option value="5">V. Mapa</option>
+                    <option value="6">J. Ruiz</option>
+                    <option value="8">Gilmore</option>
+                    <option value="9">Betty Go. Balmonte</option>
+                    <option value="10">Cubao</option>
+                    <option value="12">Anonas</option>
+                    <option value="13">Katipunan</option>
+                    <option value="15">Santolan</option>
                 </select>
             </div>
 
@@ -104,13 +104,10 @@ function calcuprice(disc) {
     var loc2 = Number(document.getElementById("goingto").value); // Destination
     var defprice = 13; // Base fare
 
-    if (loc1 === loc2) {
-        document.getElementById("ticketprice").innerHTML = "You're already at your destination!";
-        return; // Checking if the locations are the same
-    }
 
-    var distance = Math.abs(loc1 - loc2); // Calculate distance
-    var price = (defprice + distance) * disc; // Apply base fare + distance charge with discount
+    var distance = Math.abs(loc2 - loc1); // Calculate distance
+    var regprice = defprice + distance;
+    var price = (regprice) * disc; // Apply base fare + distance charge with discount
 
     document.getElementById("ticketprice").innerHTML = "Your ticket costs ₱" + price.toFixed(2);
 }
